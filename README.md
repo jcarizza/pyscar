@@ -1,3 +1,5 @@
+![demo](https://dl.dropboxusercontent.com/s/37mi0h8bbe7i02m/ejemplo.gif?dl=0)
+
 # Buscador para la lista de mails de PyAr
 
 Este proyecto nace con el propósito de que usuarios o personas que no están
