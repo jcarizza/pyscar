@@ -1,0 +1,29 @@
+html, body, pre, code, kbd, samp {
+    font-family: "Press Start 2P";
+}
+.center {
+  text-align: center;
+  margin: 0 auto !important;
+}
+.search-box {
+  padding-top: 150px;
+}
+.mid {
+  width: 70%;
+}
+.action-buttons {
+  margin: 20px 0;
+}
+.search-buttons {
+  display: inline-block !important;
+}
+.content {
+  font-size: 0.7rem;
+}
+.link {
+  text-align: left !important;
+  font-size: .8rem;
+}
+.lists {
+  text-align: left !important;
+}

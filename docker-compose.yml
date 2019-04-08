@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    image: python:3.6
+    entrypoint: /code/docker/entrypoint.sh
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/code
+    environment:
+      - HOST=0.0.0.0
+      - PORT=5000
+      - RESULT_LIMITS=20
+      - RESULT_SURROUND=50
+      - INDEX_DIR=/code/data/index
+      - FLASK_ENV=development
+      - FLASK_APP=/code/web/application.py

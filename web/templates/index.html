@@ -1,0 +1,54 @@
+<html>
+	<head>
+	    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+	    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+      <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+
+	</head>
+
+	<body {% if not results %}class="search-box"{% endif %}>
+		<div>
+			<div class="grid center mid">
+				<a href="/">
+					<h1># PyAr es <i class="nes-icon is-large heart"></i></h1>
+				</a>
+				<p>Buscá en la lista de mails de Python Argentina</p>
+			</div>
+			<div class="grid center mid">
+				<form action="" method="get">
+				<div class="nes-field">
+					<input type="text" id="name_field" name="q" class="nes-input">
+				</div>
+				<div class="grid action-buttons">
+					<button type="submit" class="nes-btn is-normal search-buttons">Buscar</button>
+				</div>
+				</form>
+			</div>
+			<div class="grid center mid">
+				<div class="lists">
+					<ul class="nes-list is-disc">
+						{% for hit in results %}
+							<li>
+								<a class="link" href="{{ hit.url|fix_url }}">{{ hit.title }}</a>
+								<p class="content">{{ hit.content|truncate(180) }}</p>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<div class="grid center mid">
+				{% if paginator %}
+					{% if paginator.has_previous() %}
+						<a href="?p={{ paginator.previous() }}&q={{ q|urlencode }}">Previo</a>
+					{% endif %}
+					{% for p in paginator.pages() %}
+						<a href="?p={{ p }}&q={{ q|urlencode }}">{{ p }}</a>
+					{% endfor %}
+					{% if paginator.has_next() %}
+						<a href="?p={{ paginator.next() }}&q={{ q|urlencode }}">Siguiente</a>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</body>
+</html>
