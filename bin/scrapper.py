@@ -208,7 +208,6 @@ if __name__ == "__main__":
                         help=('Path store output mails\n'),
                         required=True)
     parser.add_argument('-t', '--threads', action='store',
-                        required=True,
                         type=int,
                         help='How many threads to start.\n')
     parser.add_argument('--debug', action='store_true',
@@ -241,15 +240,16 @@ if __name__ == "__main__":
     queue_months = queue.Queue()
     queue_emails = queue.Queue()
     threads = []
+    num_of_threads = args.threads or 2
 
     # Threads para los meses
-    for i in range(args.threads):
+    for i in range(num_of_threads):
         t = threading.Thread(target=worker_month_archives)
         t.start()
         threads.append(t)
 
     # Threads para mails
-    for i in range(args.threads):
+    for i in range(num_of_threads):
         t = threading.Thread(target=worker_scrap_email)
         t.start()
         threads.append(t)
@@ -267,7 +267,7 @@ if __name__ == "__main__":
     # Bloquear hasta que se termine la descarga detodos los mails
     queue_emails.join()
 
-    for i in range(args.threads):
+    for i in range(num_of_threads):
         queue_months.put(None)
         queue_emails.put(None)
 
