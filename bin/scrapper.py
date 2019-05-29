@@ -221,14 +221,14 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if not args.months:
+    if args.months:
         for month in args.months:
             assert month in MONTHS, 'Misspelled month?'
 
-        MONTHS = map(str.strip, args.months)
+        MONTHS = list(map(str.strip, args.months))
 
-    if not args.years:
-        YEARS = map(str.strip, args.years)
+    if args.years:
+        YEARS = list(map(str.strip, args.years))
 
     OUTPUT_FOLDER = tempfile.mkdtemp(dir=".")
     if args.debug:
