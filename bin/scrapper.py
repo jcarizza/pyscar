@@ -211,8 +211,7 @@ if __name__ == "__main__":
                         type=int,
                         help='How many threads to start.\n')
     parser.add_argument('--debug', action='store_true',
-                        help=('Show debug info\n'),
-                        required=True)
+                        help=('Show debug info\n'))
     parser.add_argument('--years', nargs="+",
                         help=('Run scrapper on given years\n'))
     parser.add_argument('--months', nargs="+",
