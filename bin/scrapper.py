@@ -63,7 +63,7 @@ def check_folders():
 def download_month_archives(year):
 
     # Descarga secuencial
-    for month in ["March"]:
+    for month in MONTHS:
         params = {
             "year": year,
             "month": month
@@ -254,7 +254,7 @@ if __name__ == "__main__":
         threads.append(t)
 
     # Empezar a encolar archivos de meses
-    for year in ["2018"]:
+    for year in YEARS:
         download_month_archives(year)
 
     # Bloquear hasta que se termine la descarga de todos los meses
