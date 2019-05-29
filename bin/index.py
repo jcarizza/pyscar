@@ -29,7 +29,7 @@ from whoosh.fields import (
 )
 
 epilog = """
-Usar este script para indexar los correos procesados por el script `parser.py`
+Este script crea el indice de busqueda a partir de correos procesados por el script `parser.py`
 
 Example of use:
 index.py --mails='./data/mails' --ram 512 --procs 4
