@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""Extract title and content info from python mail list HTML files"""
+"""Extraer titulo y cuerpo de los archivos HTML de cada email."""
 
 import os
 import sys
@@ -51,7 +51,7 @@ class MailParser(HTMLParser):   # pylint: disable=W0223
         self.temp.truncate(0)
 
     def handle_endtag(self, tag):
-        """Guarda la data de h1 y pre"""
+        """Guarda el texto de h1 y pre"""
 
         value = self.temp.getvalue().strip()
         if tag.lower() == 'h1' and value.startswith('[pyar]'):
@@ -87,7 +87,7 @@ epilog = """
 Usar este script para extraer titulo y cuerpo de cada mail que fueron
 descargados con el script `scrapper.py`
 
-Example of use:
+Ejemplo de uso:
 parser.py --input-dir=./months/ --output-dir="./output-mails"
 """
 
